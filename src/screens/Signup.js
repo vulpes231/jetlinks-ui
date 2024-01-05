@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-
 import {
   View,
   Text,
@@ -9,23 +7,20 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const initState = {
   email: "",
   password: "",
 };
 
-export default function Signin() {
+export default function Signup() {
   const [form, setForm] = useState(initState);
 
   const navigation = useNavigation();
 
-  const handleSignUpClick = () => {
-    navigation.navigate("Signup");
-  };
-
-  const resetInput = () => {
-    setForm(initState);
+  const handleSignInClick = () => {
+    navigation.navigate("Signin");
   };
 
   const handleInputChange = (name, value) => {
@@ -35,9 +30,8 @@ export default function Signin() {
     }));
   };
 
-  const handleLogin = () => {
+  const handleSignup = () => {
     console.log(form);
-    resetInput();
   };
 
   return (
@@ -53,17 +47,17 @@ export default function Signin() {
               marginVertical: 15,
             }}
           >
-            Login
+            Signup
           </Text>
           <Text
             style={{
               fontSize: 16,
               textAlign: "center",
-              fontWeight: 200,
-              marginBottom: 20,
+              marginBottom: 15,
+              fontWeight: 100,
             }}
           >
-            Enter your details to continue
+            Sign up to start trading
           </Text>
         </View>
         <View style={styles.input}>
@@ -96,8 +90,8 @@ export default function Signin() {
             placeholder="Password"
           />
         </View>
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TouchableOpacity onPress={handleSignup} style={styles.button}>
+          <Text style={styles.buttonText}>Create Account</Text>
         </TouchableOpacity>
         <View
           style={{ flexDirection: "row", justifyContent: "center", gap: 8 }}
@@ -110,10 +104,10 @@ export default function Signin() {
               fontWeight: 200,
             }}
           >
-            Don't have an account?
+            Already have an account?
           </Text>
-          <TouchableOpacity onPress={handleSignUpClick}>
-            <Text style={styles.boldRedText}>Sign up now</Text>
+          <TouchableOpacity onPress={handleSignInClick}>
+            <Text style={styles.boldRedText}>Login now</Text>
           </TouchableOpacity>
         </View>
       </View>
