@@ -9,8 +9,10 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
 export default function LoadingScreen() {
+  const navigation = useNavigation();
   const spinValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
@@ -28,6 +30,14 @@ export default function LoadingScreen() {
     inputRange: [0, 1],
     outputRange: ["0deg", "360deg"],
   });
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate("Auth");
+    }, 4000);
+
+    return () => clearTimeout(timeout);
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.wrapper}>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { Ionicons } from "@expo/vector-icons";
 
 import {
   View,
@@ -26,6 +27,10 @@ export default function Signin() {
 
   const resetInput = () => {
     setForm(initState);
+  };
+
+  const goHome = () => {
+    navigation.navigate("Auth");
   };
 
   const handleInputChange = (name, value) => {
@@ -116,6 +121,22 @@ export default function Signin() {
             <Text style={styles.boldRedText}>Sign up now</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            marginVertical: 35,
+            justifyContent: "center",
+          }}
+          onPress={goHome}
+        >
+          <Ionicons
+            name="arrow-back-circle"
+            size={24}
+            color="red"
+            style={{ fontSize: 15 }}
+          />
+          <Text style={{ color: "red" }}>Go back</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

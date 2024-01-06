@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Ionicons } from "@expo/vector-icons";
 import {
   View,
   Text,
@@ -28,6 +29,10 @@ export default function Signup() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const goHome = () => {
+    navigation.navigate("Auth");
   };
 
   const handleSignup = () => {
@@ -110,6 +115,22 @@ export default function Signup() {
             <Text style={styles.boldRedText}>Login now</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            marginVertical: 35,
+            justifyContent: "center",
+          }}
+          onPress={goHome}
+        >
+          <Ionicons
+            name="arrow-back-circle"
+            size={24}
+            color="red"
+            style={{ fontSize: 15 }}
+          />
+          <Text style={{ color: "red" }}>Go back</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
